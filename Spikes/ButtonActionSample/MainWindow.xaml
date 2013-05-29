@@ -1,0 +1,23 @@
+﻿<s:SurfaceWindow x:Class="ButtonActionSample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    Title="ButtonActionSample"
+    >
+
+    <s:SurfaceWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Control_RD.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </s:SurfaceWindow.Resources>
+
+    <Grid >
+         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="80">
+            <s:SurfaceButton Content="Click 1" Margin="0,0,30,0" Style="{DynamicResource SurfaceButtonStyle}" Width="100" Height="100" FontSize="21.333"/>
+            <s:SurfaceButton Content="Click 2" Margin="0,0,30,0" Style="{DynamicResource SurfaceButtonStyle2}" Width="100" Height="100" FontSize="21.333"/>
+            <s:SurfaceButton Content="Click 3" Margin="0,0,30,0" Style="{DynamicResource SurfaceButtonStyle3}" Width="100" Height="100" FontSize="21.333"/>
+        </StackPanel>
+    </Grid>
+</s:SurfaceWindow>

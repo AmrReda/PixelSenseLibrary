@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Base.Extensions
+namespace PixelSenseLibrary.Extensions
 {
     public static class FrameworkElementExtensions
     {

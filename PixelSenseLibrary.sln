@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelSenseLibrary", "PixelSenseLibrary\PixelSenseLibrary.csproj", "{B9FEA5A8-9E21-4F8F-B8D0-B9E9D23AAE2B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spikes", "Spikes", "{A2073182-2AB3-4621-B5AF-CA578E11C7E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonActionSample", "Spikes\ButtonActionSample\ButtonActionSample.csproj", "{49C393D0-D49C-4144-8042-E973A569B012}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +17,15 @@ Global
 		{B9FEA5A8-9E21-4F8F-B8D0-B9E9D23AAE2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FEA5A8-9E21-4F8F-B8D0-B9E9D23AAE2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FEA5A8-9E21-4F8F-B8D0-B9E9D23AAE2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C393D0-D49C-4144-8042-E973A569B012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C393D0-D49C-4144-8042-E973A569B012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C393D0-D49C-4144-8042-E973A569B012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C393D0-D49C-4144-8042-E973A569B012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{49C393D0-D49C-4144-8042-E973A569B012} = {A2073182-2AB3-4621-B5AF-CA578E11C7E3}
 	EndGlobalSection
 EndGlobal

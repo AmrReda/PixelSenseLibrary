@@ -1,0 +1,236 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="http://schemas.microsoft.com/surface/2008" 
+                     xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing">
+    <!-- Base Grid style for 55 dpi -->
+    <Style TargetType="{x:Type Control}" x:Key="ControlBaseStyle">
+        <Setter Property="FocusVisualStyle"	
+			Value="{x:Null}"/>
+        <Setter Property="SnapsToDevicePixels"
+			Value="False"/>
+        <Setter Property="FontFamily"
+			Value="Segoe360"/>
+        <Setter Property="FontWeight"
+			Value="Normal"/>
+        <Setter Property="FontSize"
+			Value="17"/>
+        <Setter Property="Padding"
+			Value="6,2,10,10"/>
+        <Setter Property="MinHeight"
+			Value="38"/>
+        <Setter Property="MinWidth"
+			Value="38"/>
+        <Setter Property="Margin"
+			Value="1"/>
+        <Setter Property="HorizontalContentAlignment"
+			Value="Left"/>
+        <Setter Property="VerticalContentAlignment"
+			Value="Top"/>
+        <Setter Property="BorderThickness"
+			Value="2"/>
+    </Style>
+    <!-- public section -->
+    <SolidColorBrush x:Key="ControlHitAreaBrush"    
+		Color="#00FFFFFF"/>
+
+    <!-- ButtonBase -->
+    <Style x:Key="SurfaceButtonStyle"
+		TargetType="{x:Type s:SurfaceButton}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="IsTabStop"
+			Value="False" />
+        <Setter Property="Focusable"
+			Value="True" />
+        <Setter Property="Background"
+			Value="Transparent" />
+        <Setter Property="Foreground"
+			Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type s:SurfaceButton}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Press">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.StartAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.EndAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.StartAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.EndAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="360"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Height="{Binding ActualWidth, ElementName=Grid}">
+                        <Ellipse Fill="DarkGray"/>
+                        <ed:Arc x:Name="arc" ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="0" Fill="Orange" Height="Auto" Stretch="None" StartAngle="0" Width="Auto"/>
+                        <Ellipse Fill="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="8"/>
+                        <ContentPresenter  x:Name="Content"
+							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Press}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}" />
+                            </Trigger.ExitActions>
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static s:SurfaceColors.ButtonForegroundPressedBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static s:SurfaceColors.ButtonForegroundDisabledBrushKey}}"/>
+                            <Setter Property="Opacity"
+								Value="0.33"
+								TargetName="Content" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SurfaceButtonStyle2"
+		TargetType="{x:Type s:SurfaceButton}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="IsTabStop"
+			Value="False" />
+        <Setter Property="Focusable"
+			Value="True" />
+        <Setter Property="Background"
+			Value="Transparent" />
+        <Setter Property="Foreground"
+			Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type s:SurfaceButton}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Press">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.StartAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.EndAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="360"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Height="{Binding ActualWidth, ElementName=Grid}">
+                        <Ellipse Fill="DarkGray"/>
+                        <ed:Arc x:Name="arc" ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="0" Fill="Orange" Height="Auto" Stretch="None" StartAngle="0" Width="Auto"/>
+                        <Ellipse Fill="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="8"/>
+                        <ContentPresenter  x:Name="Content"
+							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Press_Copy1_BeginStoryboard" Storyboard="{StaticResource Press}" />
+                            </Trigger.EnterActions>
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static s:SurfaceColors.ButtonForegroundPressedBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static s:SurfaceColors.ButtonForegroundDisabledBrushKey}}"/>
+                            <Setter Property="Opacity"
+								Value="0.33"
+								TargetName="Content" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SurfaceButtonStyle3"
+		TargetType="{x:Type s:SurfaceButton}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="IsTabStop"
+			Value="False" />
+        <Setter Property="Focusable"
+			Value="True" />
+        <Setter Property="Background"
+			Value="Transparent" />
+        <Setter Property="Foreground"
+			Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type s:SurfaceButton}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Press">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.StartAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.EndAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="360"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ed:Arc.EndAngle)" Storyboard.TargetName="arc">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Height="{Binding ActualWidth, ElementName=Grid}">
+                        <Ellipse Fill="DarkGray"/>
+                        <ed:Arc x:Name="arc" ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="0" Fill="Orange" Height="Auto" Stretch="None" StartAngle="0" Width="Auto"/>
+                        <Ellipse Fill="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="8"/>
+                        <ContentPresenter  x:Name="Content"
+							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Press_Copy1_BeginStoryboard" Storyboard="{StaticResource Press}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}" />
+                            </Trigger.ExitActions>
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static s:SurfaceColors.ButtonForegroundPressedBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static s:SurfaceColors.ButtonForegroundDisabledBrushKey}}"/>
+                            <Setter Property="Opacity"
+								Value="0.33"
+								TargetName="Content" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

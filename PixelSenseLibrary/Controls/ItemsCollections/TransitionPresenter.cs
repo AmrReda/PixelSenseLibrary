@@ -1,18 +1,16 @@
-﻿namespace PixelSenseLibrary.Controls
+﻿using System;
+using System.Collections.Specialized;
+using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using PixelSenseLibrary.Commands;
+using PixelSenseLibrary.Helpers;
+
+namespace PixelSenseLibrary.Controls.ItemsCollections
 {
-    using System;
-    using System.Collections.Specialized;
-    using System.Windows;
-    using System.Windows.Automation.Peers;
-    using System.Windows.Controls;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Animation;
-
-    using PixelSenseLibrary.Commands;
-    using PixelSenseLibrary.Helpers;
-
-
     [TemplatePart(Name = "PART_NewItem", Type = typeof(ContentPresenter)),
     TemplatePart(Name = "PART_Transitions", Type = typeof(Panel)),
     TemplatePart(Name = "RP_TransitionPreviousStoryboard", Type = typeof(Storyboard)),

@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ItemsCollections="clr-namespace:PixelSenseLibrary.Controls.ItemsCollections">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="RD_BookPage.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+    <Style x:Key="{x:Type ItemsCollections:Book}" TargetType="{x:Type ItemsCollections:Book}">
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border BorderThickness="0" BorderBrush="#FF000000" Background="#00FFFFFF">
+                        <Grid Background="#FF89999F">
+                            <ContentControl Content="{Binding}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value >
+                <ControlTemplate TargetType="{x:Type ItemsCollections:Book}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <ItemsCollections:BookPage x:Name="PART_LeftPage"  Grid.Column="0" PageKind="Left"/>
+                        <ItemsCollections:BookPage x:Name="PART_RightPage" Grid.Column="1" PageKind="Right" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

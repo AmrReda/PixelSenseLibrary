@@ -1,64 +1,51 @@
-#OS junk files
-[Tt]humbs.db
+#Junk Files
 *.DS_Store
-
-#Visual Studio files
-*.[Oo]bj
+[Tt]humbs.db
+ 
+#Visual Studio Files
+[Oo]bj
+[Bb]in
+[Dd]ebug
+[Bb]uild/
 *.user
+*.suo
+*.exe
+*.pdb
 *.aps
-*.pch
-*.vspscc
-*.vssscc
 *_i.c
 *_p.c
 *.ncb
-*.suo
 *.tlb
 *.tlh
-*.bak
 *.[Cc]ache
+*.bak
+*.ncb
 *.ilk
 *.log
 *.lib
 *.sbr
 *.sdf
-*.opensdf
-*.unsuccessfulbuild
-ipch/
-obj/
-[Bb]in
-[Dd]ebug*/
-[Rr]elease*/
-Ankh.NoLoad
-
-#MonoDevelop
-*.pidb
-*.userprefs
-
-#Tooling
+ipch/ 
+*.dbmdl
+*.csproj.user
+*.cache
+*.swp
+*.vspscc
+*.vssscc
+*.bak.*
+*.bak
+ 
+#Tools
+_ReSharper.*
 _ReSharper*/
 *.resharper
-[Tt]est[Rr]esult*
-*.sass-cache
-
-#Project files
-[Bb]uild/
-
-#Subversion files
+*.resharper.user
+[Nn][Dd]epend[Oo]ut*/
+Ankh.NoLoad
+ 
+#Other
 .svn
-
-# Office Temp Files
-~$*
-
-#NuGet
-packages/
-
-#ncrunch
-*ncrunch*
-*crunch*.local.xml
-
-# visual studio database projects
-*.dbmdl
-
-#Test files
-*.testsettings
+ 
+# Include DLLs if they're in the NuGet packages directory
+!/packages/*/lib/*.dll
+!/packages/*/lib/*/*.dll

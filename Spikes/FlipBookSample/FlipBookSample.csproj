@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B9FEA5A8-9E21-4F8F-B8D0-B9E9D23AAE2B}</ProjectGuid>
-    <OutputType>library</OutputType>
+    <ProjectGuid>{2C48146B-180C-4B69-8738-6E61D699CF50}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PixelSenseLibrary</RootNamespace>
-    <AssemblyName>PixelSenseLibrary</AssemblyName>
+    <RootNamespace>FlipBookSample</RootNamespace>
+    <AssemblyName>FlipBookSample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Surface, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Surface.Presentation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -50,65 +47,30 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Microsoft.Surface" />
+    <Reference Include="Microsoft.Surface.Presentation" />
+    <Reference Include="Microsoft.Surface.Presentation.Generic" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Themes\Generic.xaml">
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\ItemsCollections\RD_Book.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\ItemsCollections\RD_BookPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\ItemsCollections\RD_TransitionPresenter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommonFolder.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\BookCommands.cs" />
-    <Compile Include="Commands\BookPageCommandParameter.cs" />
-    <Compile Include="Commands\BookPageCommands.cs" />
-    <Compile Include="Commands\CommonCommands.cs" />
-    <Compile Include="Commands\ContainerCommands.cs" />
-    <Compile Include="Commands\ItemContainerCommands.cs" />
-    <Compile Include="Commands\ItemsListCommands.cs" />
-    <Compile Include="Controls\Common\CaptureThief.cs" />
-    <Compile Include="Controls\ItemsCollections\Book.cs" />
-    <Compile Include="Controls\ItemsCollections\BookPage.cs" />
-    <Compile Include="Controls\ItemsCollections\TransitionPresenter.cs" />
-    <Compile Include="Converters\BooleansToScrollBarVisibilityConverter.cs" />
-    <Compile Include="Converters\BooleanToScrollBarVisibilityConverter.cs" />
-    <Compile Include="Converters\BooleanToVisibilityConverter .cs" />
-    <Compile Include="Converters\SelectorLabelConverter.cs" />
-    <Compile Include="Converters\TitleCaseConverter.cs" />
-    <Compile Include="Enums\CornerOrigin.cs" />
-    <Compile Include="Enums\Orientation.cs" />
-    <Compile Include="Enums\PageKind.cs" />
-    <Compile Include="Enums\PageStatus.cs" />
-    <Compile Include="Enums\RelativeZIndex.cs" />
-    <Compile Include="Events\GenericRoutedEventArgs.cs" />
-    <Compile Include="Events\GenericRoutedEventHandler.cs" />
-    <Compile Include="Events\PropertyChangedEventArgs.cs" />
-    <Compile Include="Events\PropertyChangedEventHandler.cs" />
-    <Compile Include="Extensions\FrameworkElementExtensions.cs" />
-    <Compile Include="Extensions\ItemsControlExtensions.cs" />
-    <Compile Include="Extensions\ListBoxExtensions.cs" />
-    <Compile Include="Extensions\OrientationExtension.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\VisualHelper.cs" />
-    <Compile Include="Helpers\BookPageComputeHelper.cs" />
-    <Compile Include="Helpers\CommandHelper.cs" />
-    <Compile Include="Helpers\LinearGradientHelper.cs" />
-    <Compile Include="Helpers\MathHelper.cs" />
-    <Compile Include="Helpers\RoutedEventHelper.cs" />
-    <Compile Include="Helpers\StoryboardHelper.cs" />
-    <Compile Include="Helpers\SurfaceEnvironmentHelper.cs" />
-    <Compile Include="Helpers\SurfaceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -122,8 +84,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Structs\PageParameters.cs" />
-    <Compile Include="Utilities\ReflectionUtilities.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -134,7 +94,20 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlipBookSample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PixelSenseLibrary\PixelSenseLibrary.csproj">
+      <Project>{B9FEA5A8-9E21-4F8F-B8D0-B9E9D23AAE2B}</Project>
+      <Name>PixelSenseLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

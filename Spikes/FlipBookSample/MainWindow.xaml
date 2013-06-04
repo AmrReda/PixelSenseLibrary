@@ -1,0 +1,17 @@
+﻿<s:SurfaceWindow x:Class="FlipBookSample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+                 xmlns:ItemsCollections="clr-namespace:PixelSenseLibrary.Controls.ItemsCollections;assembly=PixelSenseLibrary"
+                 Title="FlipBook Sample"
+    >
+  <Grid>
+        <ItemsCollections:Book x:Name="Book" ItemsSource="{Binding}">
+            <ItemsCollections:Book.ItemTemplate>
+                <DataTemplate>
+                <Image Source="{Binding}" />
+                </DataTemplate>
+            </ItemsCollections:Book.ItemTemplate>
+        </ItemsCollections:Book>
+    </Grid>
+</s:SurfaceWindow>

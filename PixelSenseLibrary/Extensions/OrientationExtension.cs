@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Windows;
+using PixelSenseLibrary.Enums;
 
 namespace PixelSenseLibrary.Extensions
 {
     public static class OrientationExtension
     {
-        public static bool? CheckValidMovementForOrientation(this NOrientation refOrienationToTest, Point ptOriginPoint, Point ptCurrentPoint, double dMinDisplacement, double dWrongDirectionThreshold)
+        public static bool? CheckValidMovementForOrientation(this Orientation refOrienationToTest, Point ptOriginPoint, Point ptCurrentPoint, double dMinDisplacement, double dWrongDirectionThreshold)
         {
             bool flag = false;
             bool flag2 = false;
-            if (refOrienationToTest != NOrientation.None)
+            if (refOrienationToTest != Orientation.None)
             {
-                foreach (NOrientation orientation in Enum.GetValues(typeof(NOrientation)))
+                foreach (Orientation orientation in Enum.GetValues(typeof(Orientation)))
                 {
-                    if ((orientation == NOrientation.None) || ((refOrienationToTest & orientation) != orientation))
+                    if ((orientation == Orientation.None) || ((refOrienationToTest & orientation) != orientation))
                     {
                         continue;
                     }
@@ -24,49 +25,49 @@ namespace PixelSenseLibrary.Extensions
                     bool flag3 = false;
                     switch (orientation)
                     {
-                        case NOrientation.Left:
-                        case NOrientation.Right:
-                        case NOrientation.Horizontal:
+                        case Orientation.Left:
+                        case Orientation.Right:
+                        case Orientation.Horizontal:
                             point.Y = 0.0;
                             point2.Y = 0.0;
                             point3.X = 0.0;
                             point4.X = 0.0;
-                            if (((orientation == NOrientation.Left) && (point2.X > (point.X + dWrongDirectionThreshold))) || ((orientation == NOrientation.Right) && (point2.X < (point.X - dWrongDirectionThreshold))))
+                            if (((orientation == Orientation.Left) && (point2.X > (point.X + dWrongDirectionThreshold))) || ((orientation == Orientation.Right) && (point2.X < (point.X - dWrongDirectionThreshold))))
                             {
                                 flag3 = true;
                             }
                             break;
                     }
-                    if (((orientation == NOrientation.Top) || (orientation == NOrientation.Bottom)) || (orientation == NOrientation.Vertical))
+                    if (((orientation == Orientation.Top) || (orientation == Orientation.Bottom)) || (orientation == Orientation.Vertical))
                     {
                         point.X = 0.0;
                         point2.X = 0.0;
                         point3.Y = 0.0;
                         point4.Y = 0.0;
-                        if (((orientation == NOrientation.Top) && (point2.Y > (point.Y + dWrongDirectionThreshold))) || ((orientation == NOrientation.Bottom) && (point2.Y < (point.Y - dWrongDirectionThreshold))))
+                        if (((orientation == Orientation.Top) && (point2.Y > (point.Y + dWrongDirectionThreshold))) || ((orientation == Orientation.Bottom) && (point2.Y < (point.Y - dWrongDirectionThreshold))))
                         {
                             flag3 = true;
                         }
                     }
                     double length = 0.0;
                     double num2 = 0.0;
-                    if (((orientation == NOrientation.TopLeft) || (orientation == NOrientation.TopRight)) || ((orientation == NOrientation.BottomLeft) || (orientation == NOrientation.BottomRight)))
+                    if (((orientation == Orientation.TopLeft) || (orientation == Orientation.TopRight)) || ((orientation == Orientation.BottomLeft) || (orientation == Orientation.BottomRight)))
                     {
                         Vector vector = (Vector)(point2 - point);
                         double d = 0.0;
-                        if (orientation == NOrientation.TopLeft)
+                        if (orientation == Orientation.TopLeft)
                         {
                             d = Vector.AngleBetween(new Vector(-1.0, -1.0), vector) * 0.017453292519943295;
                         }
-                        else if (orientation == NOrientation.TopRight)
+                        else if (orientation == Orientation.TopRight)
                         {
                             d = Vector.AngleBetween(new Vector(1.0, -1.0), vector) * 0.017453292519943295;
                         }
-                        else if (orientation == NOrientation.BottomLeft)
+                        else if (orientation == Orientation.BottomLeft)
                         {
                             d = Vector.AngleBetween(new Vector(-1.0, 1.0), vector) * 0.017453292519943295;
                         }
-                        else if (orientation == NOrientation.BottomRight)
+                        else if (orientation == Orientation.BottomRight)
                         {
                             d = Vector.AngleBetween(new Vector(1.0, 1.0), vector) * 0.017453292519943295;
                         }
@@ -84,7 +85,7 @@ namespace PixelSenseLibrary.Extensions
                         length = vector2.Length;
                         num2 = vector3.Length;
                     }
-                    if ((orientation != NOrientation.All) && (num2 > dWrongDirectionThreshold))
+                    if ((orientation != Orientation.All) && (num2 > dWrongDirectionThreshold))
                     {
                         flag3 = true;
                     }
